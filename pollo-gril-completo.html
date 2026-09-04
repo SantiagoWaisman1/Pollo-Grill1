@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pollo Gril | Pollo, alitas, kebab y burgers</title>
+<meta name="description" content="Pollo Gril: pollo entero, alitas, kebab, milanesas y burgers de pollo. Pedí por WhatsApp. Darwin y Corrientes 628." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍗</text></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   POLLO GRIL — ESTILOS
+   ============================================================ */
+
+:root {
+  --black: #0c0c0c;
+  --black-2: #1a1a1a;
+  --black-3: #232323;
+  --yellow: #ffd400;
+  --yellow-2: #ffc300;
+  --yellow-dark: #e0ac00;
+  --white: #f7f5ef;
+  --red: #e8352b;
+  --radius: 18px;
+  --shadow-hard: 6px 6px 0 rgba(189, 174, 44, 0.9);
+  --shadow-yellow: 6px 6px 0 var(--yellow);
+  --font-display: "Bangers", "Luckiest Guy", cursive;
+  --font-body: "Baloo 2", "Fredoka", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------------- decorative blobs ---------------- */
+.blob {
+  position: absolute;
+  background: var(--yellow);
+  border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%;
+  filter: blur(0px);
+  z-index: 0;
+  opacity: 0.95;
+}
+
+.blob.spin-slow {
+  animation: spin 22s linear infinite;
+}
+
+.blob.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(6deg);
+  }
+}
+
+.paint-splat {
+  position: relative;
+  display: inline-block;
+}
+
+.paint-splat::before {
+  content: "";
+  position: absolute;
+  inset: -10% -14%;
+  background: var(--yellow);
+  border-radius: 40% 60% 55% 45% / 60% 45% 55% 40%;
+  transform: rotate(-3deg);
+  z-index: -1;
+}
+
+/* ---------------- reveal-on-scroll ---------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------- header ---------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(12, 12, 12, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 4px solid var(--yellow);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  gap: 10px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  color: var(--yellow);
+  text-shadow: 2px 2px 0 #000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.site-header nav {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.site-header nav::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: max-content;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.header-actions {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 480px) {
+  .nav-links a {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+}
+
+.nav-links a:hover {
+  background: var(--yellow);
+  color: var(--black);
+  transform: translateY(-2px);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-btn {
+  position: relative;
+  background: var(--yellow);
+  border: 3px solid var(--black);
+  border-radius: 999px;
+  width: 46px;
+  height: 46px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-hard);
+  transition: transform 0.15s ease;
+}
+
+.cart-btn:hover {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.cart-btn:active {
+  transform: scale(0.95);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 800;
+  border-radius: 999px;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--black);
+  padding: 0 4px;
+}
+
+.cart-badge.pulse {
+  animation: badgePulse 0.4s ease;
+}
+
+@keyframes badgePulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.header-actions .btn-wsp-header {
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .header-actions .btn-wsp-header {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header nav {
+    display: none;
+  }
+}
+
+/* ---------------- buttons ---------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 3px solid var(--black);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: var(--shadow-hard);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translate(-2px, -3px);
+  box-shadow: 9px 9px 0 rgba(0, 0, 0, 0.9);
+}
+
+.btn:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.9);
+}
+
+.btn-yellow {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.btn-white {
+  background: var(--white);
+  color: var(--black);
+}
+
+.btn-green {
+  background: #25d366;
+  color: #062b13;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--yellow);
+  border-color: var(--yellow);
+  box-shadow: none;
+}
+
+.btn-outline:hover {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+/* ---------------- hero ---------------- */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  padding: 90px 0 60px;
+  background: radial-gradient(circle at 20% 20%, #1a1a1a 0%, #0c0c0c 60%);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-bg-stripe {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 46%;
+  background: repeating-linear-gradient(
+    -8deg,
+    var(--black-2),
+    var(--black-2) 26px,
+    var(--black) 26px,
+    var(--black) 52px
+  );
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 860px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--black);
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 999px;
+  transform: rotate(-3deg);
+  margin-bottom: 18px;
+  border: 3px solid var(--black);
+  font-size: 0.9rem;
+}
+
+.hero-title {
+  font-size: clamp(3.2rem, 9vw, 6.5rem);
+  color: var(--yellow);
+  line-height: 0.95;
+  text-shadow: 4px 4px 0 #000, 8px 8px 0 rgba(255, 212, 0, 0.15);
+}
+
+.hero-tagline {
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight: 700;
+  color: var(--white);
+  margin: 20px 0 30px;
+  max-width: 46ch;
+}
+
+@media (max-width: 860px) {
+  .hero-tagline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .hero-ctas {
+    justify-content: center;
+  }
+}
+
+.hero-art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-chicken-badge {
+  position: relative;
+  width: min(360px, 80vw);
+  aspect-ratio: 1;
+  background: var(--yellow);
+  border-radius: 50%;
+  border: 6px solid var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9rem;
+  box-shadow: var(--shadow-hard);
+  animation: float 5s ease-in-out infinite;
+}
+
+.hero-chicken-badge span {
+  filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.5));
+}
+
+.hero-sticker {
+  position: absolute;
+  background: var(--black);
+  color: var(--yellow);
+  border: 3px solid var(--yellow);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  transform: rotate(-10deg);
+}
+
+.hero-sticker.s1 {
+  top: -6px;
+  right: 0;
+}
+
+.hero-sticker.s2 {
+  bottom: 10px;
+  left: -10px;
+  transform: rotate(8deg);
+  background: var(--yellow);
+  color: var(--black);
+  border-color: var(--black);
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--yellow);
+  font-size: 1.6rem;
+  animation: float 2s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* torn edge divider */
+.torn-edge {
+  height: 26px;
+  width: 100%;
+  background: var(--yellow);
+  clip-path: polygon(
+    0% 100%,
+    4% 0%,
+    8% 100%,
+    12% 0%,
+    16% 100%,
+    20% 0%,
+    24% 100%,
+    28% 0%,
+    32% 100%,
+    36% 0%,
+    40% 100%,
+    44% 0%,
+    48% 100%,
+    52% 0%,
+    56% 100%,
+    60% 0%,
+    64% 100%,
+    68% 0%,
+    72% 100%,
+    76% 0%,
+    80% 100%,
+    84% 0%,
+    88% 100%,
+    92% 0%,
+    96% 100%,
+    100% 0%,
+    100% 100%
+  );
+}
+
+/* ---------------- section titles ---------------- */
+.section {
+  position: relative;
+  padding: 80px 0;
+}
+
+.section-title-wrap {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  color: var(--yellow);
+  text-shadow: 3px 3px 0 #000;
+  position: relative;
+  display: inline-block;
+}
+
+.section-sub {
+  color: var(--white);
+  opacity: 0.85;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.menu-section {
+  background: var(--black);
+}
+
+/* category quick nav */
+.cat-nav {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 4px 18px;
+  margin-bottom: 30px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--yellow) transparent;
+}
+
+.cat-nav::-webkit-scrollbar {
+  height: 6px;
+}
+
+.cat-nav::-webkit-scrollbar-thumb {
+  background: var(--yellow);
+  border-radius: 999px;
+}
+
+.cat-chip {
+  flex: 0 0 auto;
+  background: var(--black-2);
+  border: 2px solid var(--yellow);
+  color: var(--yellow);
+  font-weight: 800;
+  padding: 10px 18px;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.cat-chip:hover,
+.cat-chip.active {
+  background: var(--yellow);
+  color: var(--black);
+  transform: translateY(-2px);
+}
+
+/* category block */
+.category-block {
+  margin-bottom: 64px;
+  scroll-margin-top: 130px;
+}
+
+.category-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.category-heading .paint-splat h3 {
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  color: var(--black);
+  padding: 2px 14px;
+}
+
+.category-icon {
+  font-size: 2.2rem;
+}
+
+.category-note {
+  color: var(--yellow);
+  font-weight: 800;
+  font-style: normal;
+  font-size: 1.1rem;
+}
+
+.category-divider {
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--yellow),
+    var(--yellow) 18px,
+    transparent 18px,
+    transparent 26px
+  );
+  margin: 14px 0 26px;
+  border-radius: 999px;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.item-card {
+  background: var(--black-2);
+  border: 2px solid #2e2e2e;
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.item-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--yellow);
+  box-shadow: var(--shadow-yellow);
+}
+
+.item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.item-name {
+  font-weight: 800;
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.item-price {
+  font-family: var(--font-display);
+  color: var(--yellow);
+  font-size: 1.5rem;
+  white-space: nowrap;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.item-price-note {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--black);
+  background: var(--yellow);
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 6px;
+  margin-top: 3px;
+  text-align: center;
+}
+
+.item-desc {
+  color: #bdbdbd;
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+.item-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-btn {
+  background: var(--yellow);
+  color: var(--black);
+  border: 2px solid var(--black);
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.add-btn:hover {
+  background: var(--white);
+  transform: scale(1.05);
+}
+
+.add-btn.added {
+  background: #25d366;
+  color: #06210f;
+}
+
+/* ---------------- promos ---------------- */
+.promos-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 26px;
+}
+
+.promo-card {
+  background: var(--yellow);
+  color: var(--black);
+  border-radius: 22px;
+  border: 4px solid var(--black);
+  padding: 26px 22px;
+  position: relative;
+  box-shadow: var(--shadow-hard);
+  transform: rotate(-1.2deg);
+  transition: transform 0.2s ease;
+}
+
+.promo-card:nth-child(2) {
+  transform: rotate(1.2deg);
+}
+
+.promo-card:nth-child(3) {
+  transform: rotate(-0.8deg);
+}
+
+.promo-card:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.promo-badge {
+  position: absolute;
+  top: -18px;
+  right: 16px;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  padding: 6px 14px;
+  border-radius: 10px;
+  border: 3px solid var(--black);
+  font-size: 1.1rem;
+  transform: rotate(6deg);
+}
+
+.promo-name {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.promo-includes {
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+  border-bottom: 3px dashed var(--black);
+  padding-bottom: 10px;
+}
+
+.promo-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.promo-option-label {
+  font-weight: 700;
+}
+
+.promo-option-price {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+}
+
+.promo-option .add-btn {
+  background: var(--black);
+  color: var(--yellow);
+  border-color: var(--black);
+}
+
+.promo-option .add-btn:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* ---------------- location ---------------- */
+.location-section {
+  background: var(--black-2);
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.location-card {
+  background: var(--black);
+  border: 3px solid var(--yellow);
+  border-radius: var(--radius);
+  padding: 30px;
+}
+
+.location-address {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--white);
+  margin: 12px 0 24px;
+}
+
+.location-map {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 3px solid var(--yellow);
+  filter: grayscale(0.15) contrast(1.05);
+}
+
+.location-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---------------- contact ---------------- */
+.contact-section {
+  background: var(--black);
+  text-align: center;
+}
+
+.contact-card {
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--yellow);
+  color: var(--black);
+  border-radius: 24px;
+  border: 4px solid var(--black);
+  padding: 46px 30px;
+  box-shadow: var(--shadow-hard);
+}
+
+.contact-card h2 {
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+}
+
+.contact-line {
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin: 14px 0;
+}
+
+.contact-line small {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ---------------- footer ---------------- */
+.site-footer {
+  background: var(--black);
+  border-top: 4px solid var(--yellow);
+  padding: 26px 0;
+  text-align: center;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.site-footer strong {
+  color: var(--yellow);
+}
+
+/* ---------------- floating cart button (mobile) ---------------- */
+.fab-cart {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 90;
+  background: var(--yellow);
+  border: 3px solid var(--black);
+  border-radius: 999px;
+  width: 62px;
+  height: 62px;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-hard);
+}
+
+/* ---------------- cart drawer ---------------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(420px, 100%);
+  background: var(--black-2);
+  border-left: 4px solid var(--yellow);
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.cart-drawer.open {
+  transform: translateX(0);
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 3px solid var(--yellow);
+}
+
+.cart-header h3 {
+  color: var(--yellow);
+  font-size: 1.8rem;
+}
+
+.cart-close {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 4px;
+}
+
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+}
+
+.cart-empty {
+  text-align: center;
+  color: #999;
+  padding: 60px 10px;
+  font-weight: 700;
+}
+
+.cart-empty span {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #333;
+  animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.cart-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-item-name {
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.cart-item-unit {
+  color: #999;
+  font-size: 0.78rem;
+}
+
+.cart-item-sub {
+  color: var(--yellow);
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--black);
+  border-radius: 999px;
+  padding: 4px 8px;
+  border: 2px solid var(--yellow);
+}
+
+.qty-control button {
+  background: var(--yellow);
+  color: var(--black);
+  border: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.qty-control span {
+  min-width: 18px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #e8352b;
+  font-size: 1.2rem;
+  padding: 4px;
+}
+
+.cart-footer {
+  border-top: 3px solid var(--yellow);
+  padding: 18px 20px 22px;
+  background: var(--black);
+}
+
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cart-total-label {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--white);
+}
+
+.cart-total-amount {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--yellow);
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* toast */
+.toast {
+  position: fixed;
+  bottom: 96px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--yellow);
+  color: var(--black);
+  font-weight: 800;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 3px solid var(--black);
+  box-shadow: var(--shadow-hard);
+  z-index: 300;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 480px) {
+  .toast {
+    white-space: normal;
+    text-align: center;
+    max-width: 88vw;
+  }
+}
+</style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="logo">🍗 <span data-restaurant-name>POLLO GRIL</span></div>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#promos">Promos</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a id="header-wsp-btn" href="#" target="_blank" rel="noopener" class="btn btn-green btn-sm btn-wsp-header">
+          📲 WhatsApp
+        </a>
+        <button class="cart-btn" data-open-cart aria-label="Ver carrito">
+          🛒
+          <span class="cart-badge cart-count" style="display:none">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="blob spin-slow" style="width:340px;height:340px;top:-100px;left:-120px;opacity:.25;"></div>
+    <div class="blob float" style="width:180px;height:180px;bottom:-40px;right:-40px;opacity:.3;"></div>
+    <div class="hero-bg-stripe"></div>
+
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">🔥 STREET FOOD DE POLLO</span>
+        <h1 class="hero-title">POLLO<br />GRIL</h1>
+        <p class="hero-tagline" data-restaurant-tagline>EL POLLO MÁS BUSCADO DE LA CIUDAD</p>
+        <div class="hero-ctas">
+          <a href="#menu" id="ver-menu-btn" class="btn btn-yellow">🍗 VER MENÚ</a>
+          <a href="#" id="hero-wsp-btn" target="_blank" rel="noopener" class="btn btn-green">📲 PEDIR POR WHATSAPP</a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="hero-chicken-badge">
+          <span>🍗</span>
+          <div class="hero-sticker s1">100% RICO</div>
+          <div class="hero-sticker s2">¡PEDÍ YA!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-cue">⌄</div>
+  </section>
+
+  <div class="torn-edge"></div>
+
+  <!-- ===================== MENÚ ===================== -->
+  <section class="section menu-section" id="menu">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <h2 class="section-title paint-splat">MENÚ</h2>
+        <p class="section-sub">Recorré las categorías y armá tu pedido</p>
+      </div>
+
+      <nav class="cat-nav" id="cat-nav"></nav>
+
+      <div id="menu-categories"></div>
+    </div>
+  </section>
+
+  <!-- ===================== PROMOS ===================== -->
+  <section class="section" id="promos" style="background:var(--black-2);">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <h2 class="section-title paint-splat">PROMOS</h2>
+        <p class="section-sub">Las mejores combinaciones al mejor precio</p>
+      </div>
+      <div class="promos-wrap" id="promos-grid"></div>
+    </div>
+  </section>
+
+  <div class="torn-edge"></div>
+
+  <!-- ===================== UBICACIÓN ===================== -->
+  <section class="section location-section" id="ubicacion">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <h2 class="section-title paint-splat">¿DÓNDE ESTAMOS?</h2>
+      </div>
+
+      <div class="location-grid reveal">
+        <div class="location-card">
+          <p class="category-note">📍 NUESTRA DIRECCIÓN</p>
+          <p class="location-address" data-restaurant-address>Darwin y Corrientes 628</p>
+          <p id="restaurant-hours" class="item-desc" style="display:none;margin-bottom:20px;"></p>
+          <a href="#" data-maps-url target="_blank" rel="noopener" class="btn btn-yellow">🗺️ VER EN GOOGLE MAPS</a>
+        </div>
+        <div class="location-map">
+          <iframe id="map-iframe" src="" loading="lazy" title="Mapa Pollo Gril" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACTO ===================== -->
+  <section class="section contact-section" id="contacto">
+    <div class="container">
+      <div class="contact-card reveal">
+        <h2 data-restaurant-name>POLLO GRIL</h2>
+        <p class="contact-line">
+          <small>WhatsApp</small>
+          <span data-restaurant-whatsapp>11 26 900 900</span>
+        </p>
+        <p class="contact-line">
+          <small>Dirección</small>
+          <span data-restaurant-address>Darwin y Corrientes 628</span>
+        </p>
+        <a id="contact-wsp-btn" href="#" target="_blank" rel="noopener" class="btn btn-green" style="margin-top:16px;">
+          📲 ESCRIBINOS POR WHATSAPP
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <p><strong data-restaurant-name>POLLO GRIL</strong> · Darwin y Corrientes 628 · Hecho con 🔥 y mucho pollo</p>
+  </footer>
+
+  <!-- ===================== FAB CARRITO (mobile) ===================== -->
+  <button class="fab-cart" data-open-cart aria-label="Ver carrito">
+    🛒
+    <span class="cart-badge cart-count" style="display:none">0</span>
+  </button>
+
+  <!-- ===================== CARRITO ===================== -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>TU PEDIDO</h3>
+      <button class="cart-close" id="cart-close-btn" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span class="cart-total-label">TOTAL</span>
+        <span class="cart-total-amount" id="cart-total-amount">$0</span>
+      </div>
+      <a href="#" id="cart-wsp-btn" target="_blank" rel="noopener" class="btn btn-green btn-block">
+        📲 PEDIR POR WHATSAPP
+      </a>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   POLLO GRIL — DATOS DEL RESTAURANTE Y MENÚ
+   ------------------------------------------------------------
+   Editá esta sección para actualizar productos, precios,
+   promociones, horarios o datos de contacto.
+   ============================================================ */
+
+const RESTAURANT = {
+  name: "POLLO GRIL",
+  tagline: "EL POLLO MÁS BUSCADO DE LA CIUDAD",
+  // Número en formato internacional para WhatsApp (sin +, sin espacios).
+  // 54 9 11 26900900
+  whatsappNumber: "5491126900900",
+  whatsappDisplay: "11 26 900 900",
+  address: "Darwin y Corrientes 628",
+  // Horarios: completar cuando el restaurante los confirme.
+  // Ejemplo: "Lun a Dom de 19:00 a 00:00". Se muestra solo si no está vacío.
+  hours: "",
+};
+
+const MAPS_URL =
+  "https://www.google.com/maps/search/?api=1&query=" +
+  encodeURIComponent(RESTAURANT.address + ", Argentina");
+
+const MAPS_EMBED_URL =
+  "https://www.google.com/maps?q=" +
+  encodeURIComponent(RESTAURANT.address + ", Argentina") +
+  "&output=embed";
+
+const MENU = [
+  {
+    id: "pollos",
+    name: "Pollos",
+    icon: "🍗",
+    items: [
+      { name: "Pollo entero", price: 31000, desc: "(Con 2 guarniciones)" },
+      { name: "Pollo 1/2", price: 20000, desc: "(Con 2 guarniciones)" },
+      { name: "Pollo 1/4", price: 10000, desc: "(Con guarnición a elegir)" },
+      { name: "Brocheta de pata y muslo", price: 11000, desc: "(Con guarnición a elegir)" },
+    ],
+  },
+  {
+    id: "alitas",
+    name: "Alitas",
+    icon: "🍖",
+    note: "(Con salsas)",
+    items: [
+      { name: "Alitas x6", price: 5000 },
+      { name: "Alitas x12", price: 9000 },
+      { name: "Alitas x18", price: 14000 },
+      { name: "Alitas x24", price: 16000 },
+    ],
+  },
+  {
+    id: "bebidas",
+    name: "Bebidas",
+    icon: "🥤",
+    items: [
+      { name: "Cerveza tirada 500ml", price: 4000 },
+      { name: "Cerveza tirada 1L", price: 7700 },
+      { name: "Heineken lata", price: 4000 },
+      { name: "Brahma lata", price: 3000 },
+      { name: "Agua", price: 2500, desc: "(Con o sin gas)" },
+      { name: "Gaseosas", price: 2500, desc: "(Línea Pepsi)" },
+    ],
+  },
+  {
+    id: "kebab",
+    name: "Kebab",
+    icon: "🌯",
+    items: [
+      { name: "Wrap de kebab", price: 9000, desc: "(Lechuga, tomate y cebolla)" },
+      { name: "Kebab al plato", price: 9000 },
+      { name: "Sandwich de kebab", price: 9000 },
+    ],
+  },
+  {
+    id: "guarnicion",
+    name: "Guarnición",
+    icon: "🍟",
+    items: [
+      { name: "Arroz de casa", price: 6000, desc: "(Con cabello de ángel)" },
+      { name: "Ensalada", price: 6000, desc: "(Lechuga, tomate y cebolla)" },
+      { name: "Papas fritas", price: 6000 },
+    ],
+  },
+  {
+    id: "milanesa",
+    name: "Milanesa",
+    icon: "🍽️",
+    items: [
+      { name: "Milanesa de pollo", price: 7500, desc: "(Con papas fritas)" },
+      { name: "Sandwich de milanesa", price: 8000, desc: "(Con papas fritas)" },
+    ],
+  },
+  {
+    id: "burger",
+    name: "Burger",
+    icon: "🍔",
+    note: "(De pollo)",
+    items: [
+      { name: "Burger simple", price: 10000, priceNote: "(Doble +1500)", desc: "(Con papas fritas)" },
+      { name: "Burger simple solo", price: 8500, priceNote: "(Doble +1500)" },
+    ],
+  },
+];
+
+const PROMOS = [
+  {
+    id: "promo1",
+    name: "Promo 1",
+    includes: "Pollo entero",
+    options: [
+      { label: "+ 4 Gaseosas", price: 35000 },
+      { label: "+ 4 Cervezas", price: 41000 },
+    ],
+  },
+  {
+    id: "promo2",
+    name: "Promo 2",
+    includes: "Pollo 1/2",
+    options: [
+      { label: "+ 2 Gaseosas", price: 23500 },
+      { label: "+ 2 Cervezas", price: 26500 },
+    ],
+  },
+  {
+    id: "promo3",
+    name: "Promo 3",
+    includes: "Alitas x12",
+    options: [
+      { label: "+ 2 Gaseosas", price: 12500 },
+      { label: "+ 2 Cervezas", price: 14500 },
+    ],
+  },
+];
+
+/* ============================================================
+   POLLO GRIL — LÓGICA DEL CARRITO
+   ============================================================ */
+
+const Cart = (() => {
+  let items = []; // { id, name, price, qty }
+
+  function formatPrice(n) {
+    return "$" + n.toLocaleString("es-AR");
+  }
+
+  function find(id) {
+    return items.find((it) => it.id === id);
+  }
+
+  function add(id, name, price) {
+    const existing = find(id);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      items.push({ id, name, price, qty: 1 });
+    }
+    save();
+  }
+
+  function increase(id) {
+    const it = find(id);
+    if (it) {
+      it.qty += 1;
+      save();
+    }
+  }
+
+  function decrease(id) {
+    const it = find(id);
+    if (!it) return;
+    it.qty -= 1;
+    if (it.qty <= 0) {
+      remove(id);
+    } else {
+      save();
+    }
+  }
+
+  function remove(id) {
+    items = items.filter((it) => it.id !== id);
+    save();
+  }
+
+  function clear() {
+    items = [];
+    save();
+  }
+
+  function getItems() {
+    return items;
+  }
+
+  function getTotal() {
+    return items.reduce((sum, it) => sum + it.price * it.qty, 0);
+  }
+
+  function getCount() {
+    return items.reduce((sum, it) => sum + it.qty, 0);
+  }
+
+  function save() {
+    document.dispatchEvent(new CustomEvent("cart:update"));
+  }
+
+  function buildWhatsappMessage() {
+    if (items.length === 0) return "";
+    const lines = items.map(
+      (it) => `- ${it.qty}x ${it.name} (${formatPrice(it.price * it.qty)})`
+    );
+    return (
+      `Hola ${RESTAURANT.name}! Quiero hacer el siguiente pedido:\n\n` +
+      lines.join("\n") +
+      `\n\nTotal: ${formatPrice(getTotal())}`
+    );
+  }
+
+  function whatsappOrderUrl() {
+    const msg = buildWhatsappMessage();
+    return (
+      `https://wa.me/${RESTAURANT.whatsappNumber}?text=` +
+      encodeURIComponent(msg)
+    );
+  }
+
+  return {
+    add,
+    increase,
+    decrease,
+    remove,
+    clear,
+    getItems,
+    getTotal,
+    getCount,
+    formatPrice,
+    whatsappOrderUrl,
+  };
+})();
+
+/* ============================================================
+   POLLO GRIL — RENDERIZADO Y COMPORTAMIENTO DE LA PÁGINA
+   ============================================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  initHeaderInfo();
+  renderCategoryNav();
+  renderMenu();
+  renderPromos();
+  renderLocation();
+  renderContact();
+  wireHeroButtons();
+  wireCartUI();
+  wireScrollSpy();
+  wireRevealOnScroll();
+
+  document.addEventListener("cart:update", renderCart);
+  renderCart();
+});
+
+function initHeaderInfo() {
+  document.querySelectorAll("[data-restaurant-name]").forEach((el) => {
+    el.textContent = RESTAURANT.name;
+  });
+  document.querySelectorAll("[data-restaurant-tagline]").forEach((el) => {
+    el.textContent = RESTAURANT.tagline;
+  });
+  document.querySelectorAll("[data-restaurant-address]").forEach((el) => {
+    el.textContent = RESTAURANT.address;
+  });
+  document.querySelectorAll("[data-restaurant-whatsapp]").forEach((el) => {
+    el.textContent = RESTAURANT.whatsappDisplay;
+  });
+  document.querySelectorAll("[data-maps-url]").forEach((el) => {
+    el.href = MAPS_URL;
+  });
+
+  const heroWspBtn = document.getElementById("hero-wsp-btn");
+  const headerWspBtn = document.getElementById("header-wsp-btn");
+  const contactWspBtn = document.getElementById("contact-wsp-btn");
+  const genericMsg = encodeURIComponent(
+    `Hola ${RESTAURANT.name}! Quiero hacer un pedido.`
+  );
+  const genericUrl = `https://wa.me/${RESTAURANT.whatsappNumber}?text=${genericMsg}`;
+  [heroWspBtn, headerWspBtn, contactWspBtn].forEach((btn) => {
+    if (btn) btn.href = genericUrl;
+  });
+
+  const hoursEl = document.getElementById("restaurant-hours");
+  if (hoursEl) {
+    if (RESTAURANT.hours && RESTAURANT.hours.trim() !== "") {
+      hoursEl.textContent = RESTAURANT.hours;
+      hoursEl.style.display = "";
+    } else {
+      hoursEl.style.display = "none";
+    }
+  }
+}
+
+function renderCategoryNav() {
+  const nav = document.getElementById("cat-nav");
+  if (!nav) return;
+  const chips = MENU.map(
+    (cat) =>
+      `<a href="#cat-${cat.id}" class="cat-chip">${cat.icon} ${cat.name}</a>`
+  ).join("");
+  nav.innerHTML =
+    chips + `<a href="#promos" class="cat-chip">🎉 Promos</a>`;
+}
+
+function renderMenu() {
+  const container = document.getElementById("menu-categories");
+  if (!container) return;
+
+  container.innerHTML = MENU.map((cat) => {
+    const itemsHtml = cat.items
+      .map((item) => renderItemCard(cat.id, item))
+      .join("");
+
+    return `
+      <div class="category-block reveal" id="cat-${cat.id}">
+        <div class="category-heading">
+          <span class="category-icon">${cat.icon}</span>
+          <span class="paint-splat"><h3>${cat.name}</h3></span>
+          ${cat.note ? `<span class="category-note">${cat.note}</span>` : ""}
+        </div>
+        <div class="category-divider"></div>
+        <div class="items-grid">${itemsHtml}</div>
+      </div>
+    `;
+  }).join("");
+}
+
+function renderItemCard(catId, item) {
+  const id = `${catId}__${slugify(item.name)}`;
+  return `
+    <div class="item-card">
+      <div class="item-top">
+        <div class="item-name">${item.name}</div>
+        <div class="item-price">
+          ${Cart.formatPrice(item.price)}
+          ${item.priceNote ? `<span class="item-price-note">${item.priceNote}</span>` : ""}
+        </div>
+      </div>
+      ${item.desc ? `<div class="item-desc">${item.desc}</div>` : ""}
+      <div class="item-actions">
+        <button class="add-btn" data-add-id="${id}" data-add-name="${escapeAttr(item.name)}" data-add-price="${item.price}">
+          Agregar
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function renderPromos() {
+  const container = document.getElementById("promos-grid");
+  if (!container) return;
+
+  container.innerHTML = PROMOS.map((promo) => {
+    const optionsHtml = promo.options
+      .map((opt) => {
+        const id = `${promo.id}__${slugify(opt.label)}`;
+        const fullName = `${promo.name}: ${promo.includes} ${opt.label}`;
+        return `
+          <div class="promo-option">
+            <div>
+              <div class="promo-option-label">${opt.label}</div>
+              <div class="promo-option-price">${Cart.formatPrice(opt.price)}</div>
+            </div>
+            <button class="add-btn" data-add-id="${id}" data-add-name="${escapeAttr(fullName)}" data-add-price="${opt.price}">
+              Agregar
+            </button>
+          </div>
+        `;
+      })
+      .join("");
+
+    return `
+      <div class="promo-card reveal">
+        <div class="promo-badge">¡OFERTA!</div>
+        <h3 class="promo-name">${promo.name}</h3>
+        <div class="promo-includes">🍗 ${promo.includes}</div>
+        ${optionsHtml}
+      </div>
+    `;
+  }).join("");
+}
+
+function renderLocation() {
+  const iframe = document.getElementById("map-iframe");
+  if (iframe) iframe.src = MAPS_EMBED_URL;
+}
+
+function renderContact() {
+  // Datos de contacto ya se completan vía data-restaurant-* en initHeaderInfo.
+}
+
+function wireHeroButtons() {
+  const verMenuBtn = document.getElementById("ver-menu-btn");
+  if (verMenuBtn) {
+    verMenuBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
+    });
+  }
+}
+
+function wireCartUI() {
+  document.body.addEventListener("click", (e) => {
+    const addBtn = e.target.closest("[data-add-id]");
+    if (addBtn) {
+      const id = addBtn.dataset.addId;
+      const name = addBtn.dataset.addName;
+      const price = Number(addBtn.dataset.addPrice);
+      Cart.add(id, name, price);
+      flashAdded(addBtn);
+      showToast(`Agregaste: ${name}`);
+      pulseCartBadges();
+      return;
+    }
+
+    const incBtn = e.target.closest("[data-inc-id]");
+    if (incBtn) {
+      Cart.increase(incBtn.dataset.incId);
+      return;
+    }
+
+    const decBtn = e.target.closest("[data-dec-id]");
+    if (decBtn) {
+      Cart.decrease(decBtn.dataset.decId);
+      return;
+    }
+
+    const rmBtn = e.target.closest("[data-remove-id]");
+    if (rmBtn) {
+      Cart.remove(rmBtn.dataset.removeId);
+      return;
+    }
+  });
+
+  const openBtns = document.querySelectorAll("[data-open-cart]");
+  const overlay = document.getElementById("overlay");
+  const drawer = document.getElementById("cart-drawer");
+  const closeBtn = document.getElementById("cart-close-btn");
+
+  const openCart = () => {
+    overlay.classList.add("open");
+    drawer.classList.add("open");
+  };
+  const closeCart = () => {
+    overlay.classList.remove("open");
+    drawer.classList.remove("open");
+  };
+
+  openBtns.forEach((btn) => btn.addEventListener("click", openCart));
+  if (closeBtn) closeBtn.addEventListener("click", closeCart);
+  if (overlay) overlay.addEventListener("click", closeCart);
+
+  const wspOrderBtn = document.getElementById("cart-wsp-btn");
+  if (wspOrderBtn) {
+    wspOrderBtn.addEventListener("click", (e) => {
+      if (Cart.getItems().length === 0) {
+        e.preventDefault();
+        showToast("Tu carrito está vacío");
+      }
+    });
+  }
+}
+
+function flashAdded(btn) {
+  btn.classList.add("added");
+  const original = btn.textContent;
+  btn.textContent = "¡Listo! ✓";
+  setTimeout(() => {
+    btn.classList.remove("added");
+    btn.textContent = original;
+  }, 900);
+}
+
+function pulseCartBadges() {
+  document.querySelectorAll(".cart-badge").forEach((badge) => {
+    badge.classList.remove("pulse");
+    void badge.offsetWidth;
+    badge.classList.add("pulse");
+  });
+}
+
+let toastTimeout;
+function showToast(msg) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add("show");
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => toast.classList.remove("show"), 1800);
+}
+
+function renderCart() {
+  const items = Cart.getItems();
+  const count = Cart.getCount();
+  const total = Cart.getTotal();
+
+  document.querySelectorAll(".cart-count").forEach((el) => {
+    el.textContent = count;
+    el.style.display = count > 0 ? "flex" : "none";
+  });
+
+  const body = document.getElementById("cart-body");
+  const totalAmount = document.getElementById("cart-total-amount");
+  const wspBtn = document.getElementById("cart-wsp-btn");
+
+  if (totalAmount) totalAmount.textContent = Cart.formatPrice(total);
+  if (wspBtn) wspBtn.href = Cart.whatsappOrderUrl();
+
+  if (!body) return;
+
+  if (items.length === 0) {
+    body.innerHTML = `
+      <div class="cart-empty">
+        <span>🍗</span>
+        Todavía no agregaste nada.<br />¡Elegí algo rico del menú!
+      </div>
+    `;
+    return;
+  }
+
+  body.innerHTML = items
+    .map(
+      (it) => `
+      <div class="cart-item">
+        <div class="cart-item-info">
+          <div class="cart-item-name">${it.name}</div>
+          <div class="cart-item-unit">${Cart.formatPrice(it.price)} c/u</div>
+          <div class="cart-item-sub">${Cart.formatPrice(it.price * it.qty)}</div>
+        </div>
+        <div class="qty-control">
+          <button data-dec-id="${it.id}" aria-label="Restar">−</button>
+          <span>${it.qty}</span>
+          <button data-inc-id="${it.id}" aria-label="Sumar">+</button>
+        </div>
+        <button class="remove-btn" data-remove-id="${it.id}" aria-label="Eliminar">🗑️</button>
+      </div>
+    `
+    )
+    .join("");
+}
+
+function wireScrollSpy() {
+  const sections = () => Array.from(document.querySelectorAll(".category-block"));
+  const chips = () => Array.from(document.querySelectorAll(".cat-chip"));
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          chips().forEach((chip) => {
+            chip.classList.toggle("active", chip.getAttribute("href") === `#${id}`);
+          });
+        }
+      });
+    },
+    { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
+  );
+
+  sections().forEach((sec) => observer.observe(sec));
+}
+
+function wireRevealOnScroll() {
+  function checkReveals() {
+    const vh =
+      window.innerHeight || document.documentElement.clientHeight || 0;
+    document.querySelectorAll(".reveal:not(.in-view)").forEach((el) => {
+      if (!vh) {
+        el.classList.add("in-view");
+        return;
+      }
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh * 0.92 && rect.bottom > 0) {
+        el.classList.add("in-view");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", checkReveals, { passive: true });
+  window.addEventListener("resize", checkReveals);
+  window.addEventListener("load", checkReveals);
+
+  checkReveals();
+  setTimeout(checkReveals, 200);
+}
+
+function slugify(str) {
+  return str
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+function escapeAttr(str) {
+  return String(str).replace(/"/g, "&quot;");
+}
+</script>
+</body>
+</html>
